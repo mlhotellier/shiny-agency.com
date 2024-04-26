@@ -3,25 +3,15 @@ import styled from 'styled-components'
 import colors from '../../utils/styles/color'
 import DefaultPicture from '../../assets/profile.png'
 
-const CardLabel = styled.span`
-  color: #5843e4;
-  font-size: 22px;
-  font-weight: bold;
-`
-
-const CardImage = styled.img`
-  height: 80px;
-  width: 80px;
-  border-radius: 50%;
-`
-
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  align-items: flex-start;
   background-color: ${colors.backgroundLight};
+  font-family: Trebuchet MS;
   border-radius: 30px;
-  width: 350px;
+  width: 339px;
+  height: 334px;
   transition: 200ms;
   &:hover {
     cursor: pointer;
@@ -29,12 +19,40 @@ const CardWrapper = styled.div`
   }
 `
 
+const CardLabel = styled.span`
+  color: #5843e4;
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 29px;
+  padding: 0 24px;
+  line-height: 25.54px;
+  text-align: center;
+  height: 27px;
+`
+
+const CardImage = styled.img`
+  height: 148px;
+  width: 148px;
+  margin: 30.79px auto 32.27px;
+  border-radius: 50%;
+`
+
+const CardName = styled.span`
+  margin: 0 auto;
+  width: 210.21px;
+  height: 28.14px;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 29.03px;
+  text-align: center;
+`
+
 function Card({ label, title, picture }) {
   return (
     <CardWrapper>
       <CardLabel>{label}</CardLabel>
       <CardImage src={picture} alt="freelance" />
-      <span>{title}</span>
+      <CardName>{title}</CardName>
     </CardWrapper>
   )
 }

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 const HomeContent = styled.div`
   display: flex;
+  width: 1313px;
   height: 824px;
   align-items: center;
   background-color: ${colors.backgroundLight};
@@ -16,22 +17,31 @@ const TextContent = styled.div`
   padding-left: 91px;
   & h1 {
     font-size: 50px;
+    height: 249px;
+    witdh: 552px;
     line-height: 80.25px;
     padding-left: 7px;
     padding-right: 10px;
+    line-height: 80.25px;
   }
   & button {
     color: white;
+    width: 261px;
+    height: 40px;
     border-radius: 30px;
     background-color: ${colors.primary};
     padding: 9px 68px;
     border: 0px;
-    margin-top: 55px;
+    margin-top: 140px;
     font-family: Comfortaa, sans-serif;
     letter-spacing: 1px;
-    font-weight: 700;
+    font-weight: 200;
     font-size: 20px;
-    cursor: pointer;
+    &:hover {
+      cursor: pointer;
+      box-shadow: 2px 2px 10px #e2e3e9;
+      background-color: ${colors.secondary};
+    }
   }
 `
 

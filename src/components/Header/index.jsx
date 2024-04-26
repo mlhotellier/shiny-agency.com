@@ -8,9 +8,18 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   font-size: 18px;
   margin-right: 35px;
+  &:hover {
+    color: ${colors.primary};
+  }
   ${(props) =>
     props.$isFullLink &&
-    `color: white; border-radius: 30px; background-color: ${colors.primary};padding: 10px 20px`};
+    `color: white; border-radius: 30px; background-color: ${colors.primary};padding: 10px 20px;
+    &:hover {
+      cursor: pointer;
+      color:white;
+      box-shadow: 2px 2px 10px #e2e3e9;
+      background-color: ${colors.secondary};
+    }`};
 `
 
 const Navigation = styled.nav`
