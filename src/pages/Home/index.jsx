@@ -2,13 +2,15 @@ import HomeIllustration from '../../assets/home-illustration.svg'
 import styled from 'styled-components'
 import colors from '../../utils/styles/color'
 import { Link } from 'react-router-dom'
+import { useTheme } from '../../utils/hooks'
 
 const HomeContent = styled.div`
   display: flex;
   width: 1313px;
   height: 824px;
   align-items: center;
-  background-color: ${colors.backgroundLight};
+  background-color: ${({ theme }) =>
+    theme === 'light' ? `${colors.backgroundLight}` : '#4F4C6B'};
   margin: 100px 62px 0 65px;
 `
 
@@ -23,6 +25,7 @@ const TextContent = styled.div`
     padding-left: 7px;
     padding-right: 10px;
     line-height: 80.25px;
+    color: ${({ theme }) => (theme === 'light' ? '#000' : 'white')};
   }
   & button {
     color: white;
@@ -39,8 +42,9 @@ const TextContent = styled.div`
     font-size: 20px;
     &:hover {
       cursor: pointer;
-      box-shadow: 2px 2px 10px #e2e3e9;
       background-color: ${colors.secondary};
+      box-shadow: 2px 2px 10px
+      ${({ theme }) => (theme === 'light' ? '#e2e3e9' : '#5d5a78')};
     }
   }
 `
@@ -51,9 +55,10 @@ const ImageContent = styled.div`
 `
 
 function Home() {
+  const { theme } = useTheme()
   return (
-    <HomeContent>
-      <TextContent>
+    <HomeContent theme={theme}>
+      <TextContent theme={theme}>
         <h1>
           Repérez vos besoins,
           <br />
@@ -61,7 +66,7 @@ function Home() {
           <br />
           avec les meilleurs talents
         </h1>
-        <Link to="/survey/1">
+        <Link to="/survey/1" theme={theme}>
           <button>Faire le test</button>
         </Link>
       </TextContent>
