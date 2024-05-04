@@ -60,7 +60,7 @@ const LoaderWrapper = styled.div`
   justify-content: center;
 `
 
-function getUrlParams(answers) {
+export function getUrlParams(answers) {
   const answerNumbers = Object.keys(answers)
 
   return answerNumbers.reduce((previousParams, answerNumber, index) => {

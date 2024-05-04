@@ -6,7 +6,6 @@ import { useTheme } from '../../utils/hooks'
 
 const HomeContent = styled.div`
   display: flex;
-  width: 1313px;
   height: 824px;
   align-items: center;
   background-color: ${({ theme }) =>
@@ -44,7 +43,7 @@ const TextContent = styled.div`
       cursor: pointer;
       background-color: ${colors.secondary};
       box-shadow: 2px 2px 10px
-      ${({ theme }) => (theme === 'light' ? '#e2e3e9' : '#5d5a78')};
+        ${({ theme }) => (theme === 'light' ? '#e2e3e9' : '#5d5a78')};
     }
   }
 `
@@ -56,6 +55,7 @@ const ImageContent = styled.div`
 
 function Home() {
   const { theme } = useTheme()
+
   return (
     <HomeContent theme={theme}>
       <TextContent theme={theme}>
