@@ -1,84 +1,63 @@
-import HomeIllustration from '../../assets/home-illustration.svg'
 import styled from 'styled-components'
-import colors from '../../utils/styles/color'
-import { Link } from 'react-router-dom'
+import color from '../../utils/styles/color'
+import { StyledLink } from '../../utils/styles/Atoms'
 import { useTheme } from '../../utils/hooks'
+import HomeIllustration from '../../assets/home-illustration.svg'
 
-const HomeContent = styled.div`
+const HomeWrapper = styled.div`
   display: flex;
-  height: 824px;
-  align-items: center;
+  justify-content: center;
+`
+
+const HomerContainer = styled.div`
+  margin: 30px;
   background-color: ${({ theme }) =>
-    theme === 'light' ? `${colors.backgroundLight}` : '#4F4C6B'};
-  margin: 100px 62px 0 65px;
+    theme === 'light' ? color.backgroundLight : color.backgroundDark};
+  padding: 60px 90px;
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
 `
 
-const TextContent = styled.div`
-  width: 50%;
-  padding-left: 91px;
-  & h1 {
-    font-size: 50px;
-    height: 249px;
-    witdh: 552px;
-    line-height: 80.25px;
-    padding-left: 7px;
-    padding-right: 10px;
-    line-height: 80.25px;
-    color: ${({ theme }) => (theme === 'light' ? '#000' : 'white')};
-  }
-  & button {
-    color: white;
-    width: 261px;
-    height: 40px;
-    border-radius: 30px;
-    background-color: ${colors.primary};
-    padding: 9px 68px;
-    border: 0px;
-    margin-top: 140px;
-    font-family: Comfortaa, sans-serif;
-    letter-spacing: 1px;
-    font-weight: 200;
-    font-size: 20px;
-    &:hover {
-      cursor: pointer;
-      background-color: ${colors.secondary};
-      box-shadow: 2px 2px 10px
-        ${({ theme }) => (theme === 'light' ? '#e2e3e9' : '#5d5a78')};
-    }
+const LeftCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  ${StyledLink} {
+    max-width: 250px;
   }
 `
 
-const ImageContent = styled.div`
-  width: 50%;
-  padding: 139px 77px 179px 45px;
+const StyledTitle = styled.h2`
+  padding-bottom: 30px;
+  max-width: 280px;
+  line-height: 50px;
+  color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
+`
+
+const Illustration = styled.img`
+  flex: 1;
 `
 
 function Home() {
   const { theme } = useTheme()
 
   return (
-    <HomeContent theme={theme}>
-      <TextContent theme={theme}>
-        <h1>
-          Repérez vos besoins,
-          <br />
-          on s’occupe du reste,
-          <br />
-          avec les meilleurs talents
-        </h1>
-        <Link to="/survey/1" theme={theme}>
-          <button>Faire le test</button>
-        </Link>
-      </TextContent>
-      <ImageContent>
-        <img
-          src={HomeIllustration}
-          alt="illustration de cv"
-          width="541"
-          height="506"
-        />
-      </ImageContent>
-    </HomeContent>
+    <HomeWrapper>
+      <HomerContainer theme={theme}>
+        <LeftCol>
+          <StyledTitle theme={theme}>
+            Repérez vos besoins, on s’occupe du reste, avec les meilleurs
+            talents
+          </StyledTitle>
+          <StyledLink to="/survey/1" $isFullLink>
+            Faire le test
+          </StyledLink>
+        </LeftCol>
+        <Illustration src={HomeIllustration} />
+      </HomerContainer>
+    </HomeWrapper>
   )
 }
 

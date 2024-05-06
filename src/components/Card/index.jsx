@@ -1,70 +1,81 @@
+import PropTypes from 'prop-types'
+import { Component } from 'react'
 import styled from 'styled-components'
-import colors from '../../utils/styles/color'
+import color from '../../utils/styles/color'
 import DefaultPicture from '../../assets/profile.png'
-import { useTheme } from '../../utils/hooks'
-import { useState } from 'react'
+
+const CardLabel = styled.span`
+  color: ${({ theme }) => (theme === 'light' ? color.primary : '#ffffff')};
+  font-size: 22px;
+  font-weight: normal;
+  padding-left: 15px;
+`
+
+const CardTitle = styled.div`
+  color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
+  font-size: 22px;
+  font-weight: normal;
+  align-self: center;
+  height: 25px;
+  display: flex;
+  align-items: center;
+`
+
+const CardImage = styled.img`
+  height: 150px;
+  width: 150px;
+  align-self: center;
+  border-radius: 50%;
+`
 
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-around;
+  padding: 15px;
   background-color: ${({ theme }) =>
-    theme === 'light' ? `${colors.backgroundLight}` : '#4F4C6B'};
-  font-family: Trebuchet MS;
+    theme === 'light' ? color.backgroundLight : color.backgroundDark};
   border-radius: 30px;
-  width: 339px;
-  height: 334px;
-  transition: 200ms;
+  width: 300px;
+  height: 300px;
   &:hover {
     cursor: pointer;
-    box-shadow: 2px 2px 10px
-      ${({ theme }) => (theme === 'light' ? '#e2e3e9' : '#5d5a78')};
   }
 `
 
-const CardLabel = styled.span`
-  color: ${({ theme }) => (theme === 'light' ? '#5843e4' : '#fff')};
-  font-size: 22px;
-  font-weight: 400;
-  margin-top: 29px;
-  padding: 0 24px;
-  line-height: 25.54px;
-  text-align: center;
-  height: 27px;
-`
+class Card extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isFavorite: false,
+    }
+  }
 
-const CardImage = styled.img`
-  height: 148px;
-  width: 148px;
-  margin: 30.79px auto 32.27px;
-  border-radius: 50%;
-`
+  render() {
+    const { theme, picture, label, title } = this.props
 
-const CardName = styled.span`
-  margin: 0 auto;
-  width: 210.21px;
-  height: 28.14px;
-  font-size: 25px;
-  font-weight: 400;
-  line-height: 29.03px;
-  text-align: center;
-  color: ${({ theme }) => (theme === 'light' ? '#000' : '#fff')};
-`
+    return (
+      <CardWrapper theme={theme} onClick={this.setFavorite}>
+        <CardLabel theme={theme}>{label}</CardLabel>
+        <CardImage src={picture} alt="freelance" />
+        <CardTitle theme={theme}>{title}</CardTitle>
+      </CardWrapper>
+    )
+  }
+}
 
-function Card({ title = '', label = '', picture = DefaultPicture }) {
-  const { theme } = useTheme()
-  const [isFavorite, setIsFavorite] = useState(false)
-  const star = isFavorite ? '⭐️' : ''
+Card.propTypes = {
+  label: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  theme: PropTypes.string.isRequired,
+}
 
-  return (
-    <CardWrapper theme={theme} onClick={() => setIsFavorite(!isFavorite)}>
-      <CardLabel theme={theme}>{label}</CardLabel>
-      <CardImage src={picture} alt="freelance" />
-      <CardName theme={theme}>
-        {star} {title} {star}
-      </CardName>
-    </CardWrapper>
-  )
+Card.defaultProps = {
+  label: '',
+  title: '',
+  picture: DefaultPicture,
+  theme: 'light',
 }
 
 export default Card

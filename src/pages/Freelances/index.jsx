@@ -2,6 +2,7 @@ import Card from '../../components/Card'
 import styled from 'styled-components'
 import { Loader } from '../../utils/styles/Atoms'
 import { useFetch, useTheme } from '../../utils/hooks'
+import { Link } from 'react-router-dom'
 
 const FreelancesContainer = styled.div`
   display: flex;
@@ -72,12 +73,18 @@ function Freelances() {
       ) : (
         <CardsContainer>
           {freelancersList.map((profile, index) => (
-            <Card
-              key={`${profile.name}-${index}`}
-              label={profile.job}
-              title={profile.name}
-              picture={profile.picture}
-            />
+            <Link
+              style={{ textDecoration: 'none' }}
+              key={`freelance-${profile.id}`}
+              to={`/profile/${profile.id}`}
+            >
+              <Card
+                key={`${profile.name}-${index}`}
+                label={profile.job}
+                title={profile.name}
+                picture={profile.picture}
+              />
+            </Link>
           ))}
         </CardsContainer>
       )}
