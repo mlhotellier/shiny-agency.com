@@ -3,9 +3,7 @@ import { ThemeContext } from '../context'
 
 export function useFetch(url) {
   const [data, setData] = useState({})
-
   const [isLoading, setLoading] = useState(true)
-
   const [error, setError] = useState(false)
 
   useEffect(() => {
@@ -25,7 +23,6 @@ export function useFetch(url) {
     }
     fetchData()
   }, [url])
-
   return { isLoading, data, error }
 }
 

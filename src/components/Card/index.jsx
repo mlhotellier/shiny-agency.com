@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import colors from '../../utils/styles/color'
 import DefaultPicture from '../../assets/profile.png'
@@ -52,7 +51,7 @@ const CardName = styled.span`
   color: ${({ theme }) => (theme === 'light' ? '#000' : '#fff')};
 `
 
-function Card({ label, title, picture }) {
+function Card({ title = '', label = '', picture = DefaultPicture }) {
   const { theme } = useTheme()
   const [isFavorite, setIsFavorite] = useState(false)
   const star = isFavorite ? '⭐️' : ''
@@ -66,18 +65,6 @@ function Card({ label, title, picture }) {
       </CardName>
     </CardWrapper>
   )
-}
-
-Card.propTypes = {
-  label: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
-}
-
-Card.defaultProps = {
-  title: '',
-  label: '',
-  picture: DefaultPicture,
 }
 
 export default Card
