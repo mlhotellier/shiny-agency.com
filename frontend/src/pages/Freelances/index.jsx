@@ -71,7 +71,7 @@ function Freelances() {
           <Loader data-testid="loader" />
         </LoaderWrapper>
       ) : (
-        <CardsContainer>
+        <CardsContainer data-testid="cards">
           {freelancersList.map((profile, index) => (
             <Link
               style={{ textDecoration: 'none' }}

@@ -42,6 +42,7 @@ describe('The Freelances component', () => {
       </ThemeProvider>
     )
     expect(screen.getByTestId('loader')).toBeTruthy()
+
     // await waitFor(() => {
     //   expect(screen.getByText('Harry Potter')).toBeTruthy()
     //   expect(screen.getByText('Hermione Granger')).toBeTruthy()

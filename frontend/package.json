@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@testing-library/jest-dom": "^6.4.5",
     "@babel/plugin-proposal-private-property-in-object": "^7.18.0",
     "@testing-library/react": "^15.0.6",
     "@testing-library/user-event": "^14.5.2",
@@ -39,6 +40,7 @@
     ]
   },
   "devDependencies": {
-    "msw": "^0.44.2"
+    "msw": "^0.44.2",
+    "prettier": "2.2.1"
   }
 }
