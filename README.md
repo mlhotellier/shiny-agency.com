@@ -1,7 +1,7 @@
 # Installation
 
 ```bash
-  git clone https://github.com/mlhotellier/les-bonnes-pieces.fr.git
+  git clone https://github.com/mlhotellier/shiny-agency.com.git
 ```
 
 ## Installation du backend
